@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "351e2517-7874-48d7-824e-d402aeebe674",
+		"name": "Spotify Playlist Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Tracks From Playlis-AB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// var previousRequest = JSON.parse(globals.previousRequest),",
+							"//     webhookRequestData = previousRequest.data;",
+							"",
+							"// console.log(JSON.stringify(webhookRequestData));",
+							"",
+							"// pm.environment.set(\"user_query\", webhookRequestData.text );",
+							"// //pm.environment.set(\"response_url\", webhookRequestData.response_url );",
+							"",
+							"// console.log(pm.environment.get(\"user_query\"));",
+							"",
+							"// var value = webhookRequestData.text;",
+							"// var nameArr = value.split(',');",
+							"",
+							"// var input1 = nameArr[0];",
+							"// pm.variables.set(\"string1\", input1);",
+							"// //console.log(input1);",
+							"// var input2 = nameArr[1];",
+							"// pm.variables.set(\"string2\", input2);",
+							"// //console.log(input2);",
+							"// var input3 = nameArr[2];",
+							"// pm.variables.set(\"string3\", input3);",
+							"// //console.log(input3);",
+							"// var input4 = nameArr[3];",
+							"// pm.environment.set(\"string4\", input4);",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"//console.log(input4);",
+							"//console.log(pm.environment.get(\"response_url\"));",
+							"",
+							"",
+							"",
+							"// var previousRequest = JSON.parse(globals.previousRequest),",
+							"// webhookRequestData = previousRequest.data;",
+							"// JSON.parse(globals.previousRequest)",
+							"// console.log( previousRequest.data,'previous request')",
+							"// //webhookRequestData contains the data sent to your webhook.",
+							"// // console.log(JSON.stringify(webhookRequestData));",
+							"",
+							"// //var previousRequest = JSON.parse(globals.previousRequest.data.text),",
+							"// //webhookRequestData = previousRequest;",
+							"",
+							"// //webhookRequestData contains the data sent to your webhook.",
+							"// //console.log(JSON.stringify(webhookRequestData));",
+							"",
+							"// var value = previousRequest.data.text;",
+							"",
+							"// var nameArr = value.split(',');",
+							"",
+							"// var input1 = nameArr[0];",
+							"// pm.variables.set(\"string1\", input1);",
+							"// //console.log(input1);",
+							"// var input2 = nameArr[1];",
+							"// pm.variables.set(\"string2\", input2);",
+							"// //console.log(input2);",
+							"// var input3 = nameArr[2];",
+							"// pm.variables.set(\"string3\", input3);",
+							"// //console.log(input3);",
+							"// //var input4 = nameArr[3];",
+							"// //console.log(input4);",
+							"",
+							"",
+							"",
+							"",
+							"// //pm.environment.set(\"string4\", input4);",
+							"",
+							"",
+							"//  for (var i = 0; i < nameArr.length-2; i++) {",
+							"//       //console.log(nameArr[i]);\"\\n\"",
+							"//       ppm.environment.set(\"string[i]\", nameArr[i]);",
+							"//   }",
+							"",
+							"// //console.log(nameArr[0]);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/{{playlistid}}/tracks?offset=0&fields=items(track(name,artists(name)))",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"{{playlistid}}",
+						"tracks"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "CHANGE THIS to '100' TO GET THE _NEXT_ 100 IN A TRACK (100 is the max response) "
+						},
+						{
+							"key": "fields",
+							"value": "items(track(name,artists(name)))",
+							"description": "pull only the names/artists\n"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
