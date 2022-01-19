@@ -148,7 +148,7 @@
 						{
 							"key": "offset",
 							"value": "0",
-							"description": "CHANGE THIS to '100' TO GET THE _NEXT_ 100 IN A TRACK (100 is the max response) "
+							"description": "Change this to '100' to get the next 100 in a playlist (100 is the max response) "
 						},
 						{
 							"key": "fields",
